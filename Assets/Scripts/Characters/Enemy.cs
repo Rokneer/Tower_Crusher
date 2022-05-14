@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class Enemy: Character
+﻿public class Enemy: Character
 {
-
+    //Hereda de Character pero no necesita cambios
 }

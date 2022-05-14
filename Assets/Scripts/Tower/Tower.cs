@@ -1,42 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
     [SerializeField] private List<Floor> floors;
-    [SerializeField] float delta = 1f;
-    [SerializeField] private GameManager gameManager;
 
     public List<Floor> TowerFloors { get => floors; set => floors = value; }
-    private void ReorderTower(int floorNumber)
+
+    public void ExecuteHideFloor() //Se encapsula la corrutina para que pueda ser ejecutada por botones
     {
-        foreach (Floor floor in TowerFloors)
-        {
-            int i = 0;
-            if (i > floorNumber)
-            {
-                TowerFloors[i].gameObject.transform.position -= new Vector3(0, -delta, 0);
-                --TowerFloors[i].floorIndex;
-            }
-            i++;
-        }
+        StartCoroutine(HideFloor());
     }
-    public void RemoveDefeatedFloors(Floor floor)
+    private IEnumerator HideFloor()
     {
-        for (int i = (int)floor.floorIndex; i < TowerFloors.Count; i++)
+        yield return new WaitForSeconds(0.4f); //Se esperan 0.4 segundos
+        for (int i = 0; i < TowerFloors.Count; i++)  //Se recorre la lista de pisos
         {
-            if(TowerFloors[i].character == null)
+            if (TowerFloors[i].character == null)  //Se revisa si hay un dentro del piso
             {
-                Destroy(TowerFloors[i].gameObject);
-                TowerFloors.RemoveAt(i);
-                ReorderTower(i);
-
-                int playerFloorAmount = gameManager.playerTower.TowerFloors.Count - 1;
-                Vector3 playerFloorPosition = gameManager.playerTower.TowerFloors[playerFloorAmount].transform.localPosition;
-
-                GameObject extraPlayerFloor = Instantiate(gameManager.playerFloor,new Vector3(0, playerFloorPosition.y + delta, 0), Quaternion.identity, gameManager.playerTower.transform);
-                gameManager.playerTower.TowerFloors.Add(extraPlayerFloor.GetComponent<Floor>());
-                Debug.Log("Added Floor");
+                TowerFloors[i].gameObject.SetActive(false);  //Se desactiva el piso de la torre
+                TowerFloors.RemoveAt(i);  //Se remueve el piso de la lista de pisos
             }
         }
     }

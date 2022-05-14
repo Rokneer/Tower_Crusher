@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class Upgrade : Character
+﻿public class Upgrade : Character
 {
-
+    //Hereda de Character pero no necesita cambios
 }

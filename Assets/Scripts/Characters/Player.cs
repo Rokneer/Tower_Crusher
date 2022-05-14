@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Player : Character
+public class Player : Character //Hereda de Character
 {
     [SerializeField]  uint lives;
     [SerializeField] TextMesh lifeText;
@@ -10,20 +9,19 @@ public class Player : Character
 
     private void Awake()
     {
-        currentPowerLevel = basePowerLevel;
-        ChangePowerText();
-        LifeBarUpdate();
+        ChangePowerText(); //Actualiza el UI del poder
+        LifeBarUpdate();  //Actualiza el UI de la vida
     }
 
     public void LifeBarUpdate()
     {
-        lifeText.text = Lives.ToString();
+        lifeText.text = Lives.ToString();  //Toma el número de vidas y lo lleva a un string
     }
-    public override void BattleDefeat()
+    public override void BattleDefeat() //Hace Override a la función BattleDefeat para cambiar su funcionalidad
     {
-        Lives--;
-        LifeBarUpdate();
-        if(Lives == 0) Destroy(this);
+        Lives--;  //Decrementa el número de vidas
+        LifeBarUpdate();  //Actualiza el UI de la vida
+        if (Lives == 0) Destroy(this);  //Si las vidas son 0 destruye el Script
     }
 }
 
