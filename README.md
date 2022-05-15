@@ -13,4 +13,4 @@ Instrucciones:
 Después de descomprimir el archivo y abrir el ejecutable el juego aparece, es un sola pantalla, el circulo verde respresenta al jugador, el cuadrado azul la mejora y los hexagonos rojos son los enemigos. Al lado de cada piso de las torres hay un botón blanco, al presionarlo el jugador se mueve a el espacio respectivo y se da una pelea de haber un enemigo. Si se gana eliminando a todos los enemigos o se pierden las tres vidas el nivel se reinicia.
 
 Link:
-https://drive.google.com/file/d/1fZopIkM3GrtRnjSaPoW9qutisCJFBKts/view?usp=sharing
+https://drive.google.com/file/d/1hjY1zfykiX2vzZY-yOF65wzzFu1g9sRo/view?usp=sharing
